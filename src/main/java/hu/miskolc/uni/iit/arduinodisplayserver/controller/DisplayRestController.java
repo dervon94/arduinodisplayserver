@@ -17,8 +17,8 @@ public class DisplayRestController {
 
     @RequestMapping(value = {"/listByIp"}, method = {RequestMethod.GET})
     @ResponseBody
-    public String showRunnerById() {
-        return displayService.getSensorValuesByIpAddress("192.168.2.8").toString();
+    public String showSensorsByIP() {
+        return displayService.getSensorValuesByIpAddress("192.168.2.9").toString();
     }
 
     @RequestMapping(value = "/list")
