@@ -1,13 +1,14 @@
 package hu.miskolc.uni.iit.arduinodisplayserver.DAO.Imp;
 
 import hu.miskolc.uni.iit.arduinodisplayserver.DAO.MeasurementDAO;
+import hu.miskolc.uni.iit.arduinodisplayserver.DAO.ResultData;
+import hu.miskolc.uni.iit.arduinodisplayserver.controller.MeasuringType;
 import hu.miskolc.uni.iit.arduinodisplayserver.model.repository.MeasuringDisplayRepository;
 import hu.miskolc.uni.iit.model.MeasuringDevice;
 import hu.miskolc.uni.iit.model.SensorValues;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 
@@ -22,15 +23,30 @@ public class MeasurementSpringDataDAO implements MeasurementDAO {
 
     @Override
     public List<SensorValues> listSensorValuesByIpAddress(final String ipAddress) {
-        final Calendar begin = new GregorianCalendar(2018, 7, 1);
-        final Calendar end = new GregorianCalendar(2018, 7, 1);
-        end.add(Calendar.DAY_OF_MONTH, 1);
-        System.out.println(begin.getTime());
-        System.out.println(end.getTime());
-
-        System.out.println(measuringDisplayRepository.getDeviceHumidityValueBetweenDates(begin, end, "arduinoSensor1"));
         final List<SensorValues> result = measuringDisplayRepository.getAllSensorValues(ipAddress);
         return result;
-//        return null;
+    }
+
+    @Override
+    public List<ResultData> listSpecifiedSensorValueBetweenDates(final Calendar begin, final Calendar end, final String deviceId, final MeasuringType type) {
+        end.add(Calendar.DAY_OF_MONTH, 1);
+        switch (type)
+
+        {
+            case HUMIDITY: {
+                return measuringDisplayRepository.getDeviceHumidityValuesBetweenDates(begin, end, "arduinoSensor1");
+            }
+            case RAIN: {
+                return measuringDisplayRepository.getDeviceRainValuesBetweenDates(begin, end, "arduinoSensor1");
+            }
+            case LIGHT: {
+                return measuringDisplayRepository.getDeviceLightValuesBetweenDates(begin, end, "arduinoSensor1");
+            }
+            case TEMPERATURE: {
+                return measuringDisplayRepository.getDeviceTemperatureValuesBetweenDates(begin, end, "arduinoSensor1");
+            }
+        }
+
+        return null;
     }
 }

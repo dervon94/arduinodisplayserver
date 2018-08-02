@@ -1,0 +1,29 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+
+           targetNamespace="http://uni/miskolc/hu/iit/arduindisplayserver"
+           elementFormDefault="qualified"
+           attributeFormDefault="qualified"
+>
+
+
+    <xs:complexType name="RequestDTO">
+        <xs:sequence>
+            <xs:element name="begin" type="xs:date"/>
+            <xs:element name="end" type="xs:date"/>
+            <xs:element name="deviceId" type="xs:string"/>
+            <xs:element name="type">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="humidity"/>
+                        <xs:enumeration value="rain"/>
+                        <xs:enumeration value="light"/>
+                        <xs:enumeration value="temperature"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+        </xs:sequence>
+    </xs:complexType>
+
+
+</xs:schema>
