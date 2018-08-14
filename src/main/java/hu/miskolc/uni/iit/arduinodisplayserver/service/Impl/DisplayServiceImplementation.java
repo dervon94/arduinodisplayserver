@@ -30,4 +30,11 @@ public class DisplayServiceImplementation implements DisplayService {
     public List<ResultData> getMeasuredValuesBetweeenDates(final Calendar begin, final Calendar end, final String deviceId, final MeasuringType type) {
         return measurementDAO.listSpecifiedSensorValueBetweenDates(begin, end, deviceId, type);
     }
+
+    @Override
+    public List<String> getList(final String propertyName) {
+//        switch (propertyName)
+//        ""
+        return null;
+    }
 }

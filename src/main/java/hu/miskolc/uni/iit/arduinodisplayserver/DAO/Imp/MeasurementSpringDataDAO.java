@@ -34,16 +34,16 @@ public class MeasurementSpringDataDAO implements MeasurementDAO {
 
         {
             case HUMIDITY: {
-                return measuringDisplayRepository.getDeviceHumidityValuesBetweenDates(begin, end, "arduinoSensor1");
+                return measuringDisplayRepository.getDeviceHumidityValuesBetweenDates(begin, end, deviceId);
             }
             case RAIN: {
-                return measuringDisplayRepository.getDeviceRainValuesBetweenDates(begin, end, "arduinoSensor1");
+                return measuringDisplayRepository.getDeviceRainValuesBetweenDates(begin, end, deviceId);
             }
             case LIGHT: {
-                return measuringDisplayRepository.getDeviceLightValuesBetweenDates(begin, end, "arduinoSensor1");
+                return measuringDisplayRepository.getDeviceLightValuesBetweenDates(begin, end, deviceId);
             }
             case TEMPERATURE: {
-                return measuringDisplayRepository.getDeviceTemperatureValuesBetweenDates(begin, end, "arduinoSensor1");
+                return measuringDisplayRepository.getDeviceTemperatureValuesBetweenDates(begin, end, deviceId);
             }
         }
 

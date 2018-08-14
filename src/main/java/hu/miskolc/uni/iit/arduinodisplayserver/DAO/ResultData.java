@@ -11,6 +11,12 @@ public class ResultData {
         this.value = value;
     }
 
+    public ResultData(final Calendar date, final boolean value) {
+        this.date = date;
+        this.value = value ? 1 : 0;
+    }
+
+
     public Calendar getDate() {
         return date;
     }

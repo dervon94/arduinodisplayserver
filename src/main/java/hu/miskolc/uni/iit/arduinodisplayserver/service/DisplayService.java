@@ -16,4 +16,6 @@ public interface DisplayService {
 
     List<ResultData> getMeasuredValuesBetweeenDates(Calendar begin, Calendar end, String deviceId, MeasuringType type);
 
+    List<String> getList(String propertyName);
+
 }
